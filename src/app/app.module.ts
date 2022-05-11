@@ -7,13 +7,15 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './user.service';
+import { UsersserachComponent } from './usersserach/usersserach.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    UsersserachComponent
   ],
   imports: [
     BrowserModule,
