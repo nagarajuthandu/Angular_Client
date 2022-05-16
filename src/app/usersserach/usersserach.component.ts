@@ -13,12 +13,17 @@ interface User {
 })
 export class UsersserachComponent implements OnInit {
   users:User[]=[]
+
+
   constructor(private userservice:UserService) { }
 
   ngOnInit(): void {
-    this.userservice.usersearch().subscribe(data=>{console.log(data)
+
+
+    this.userservice.usersearch().subscribe(data=>{
     this.users=data
     });
+
 
   }
 

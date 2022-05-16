@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormControl } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 @Component({
   selector: 'app-register',
@@ -11,7 +11,7 @@ import { UserService } from '../user.service';
 
 export class RegisterComponent implements OnInit {
 
-  constructor(private userservice:UserService) { }
+  constructor(private router:Router, private userservice:UserService) { }
 
   register = new FormGroup({
     username:new FormControl(''),
@@ -20,10 +20,14 @@ export class RegisterComponent implements OnInit {
   });
   onSubmit() {
     // TODO: Use EventEmitter with form value
-    console.warn(this.register.value);
+    // console.warn(this.register.value);
+  this.userservice.registerUser(this.register.value).subscribe(data => {
+    alert("You registration is sucess");
+    this.router.navigate(["/login"])
 
-    this.userservice.registerUser(this.register.value).subscribe(data => {console.log("saved to server")})
-  }
+  })
+
+}
 
   ngOnInit(): void {
 

@@ -1,0 +1,54 @@
+<h2>Lets code Username</h2>
+<div class="container-fluid">
+<div class="row">
+<div class="col-sm-6 d-flex justify-content-center">
+
+  <div class="card bg-primary">
+    <div class="card-body">
+<form [formGroup]="codingfrom" (ngSubmit)="runcode()">
+  Language: <select class="form-control" formControlName="language">
+            <option value="c">C Language</option>
+            <option value="java">Java</option>
+            <option value="py">Python</option>
+            </select>
+          <br>
+  <h5>Code :</h5> <textarea rows="15" cols="90" class="form-control" formControlName="code"></textarea>
+  <button class="btn-danger">Reset code</button>
+  <button type="submit" class="btn-warning">Compile</button>
+  <button class="btn-success">Save</button>
+</form>
+</div>
+</div>
+</div>
+<div class="col-sm-6">
+  <div class="row">
+    <div class="col-sm-12">
+      <h3>Q(Number):Programm Description</h3>
+      <p>program procedure</p>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <h3>Expected Result</h3>
+      <h6>Test Case 1</h6>
+      <h6>Test Case 2</h6>
+      <h6>Test Case 3</h6>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <h3>Test Result</h3>
+      {{result}}
+
+    </div>
+  </div>
+
+</div>
+
+
+
+</div>
+</div>

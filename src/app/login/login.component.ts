@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,7 @@ import { UserService } from '../user.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private usersrvice:UserService) { }
+  constructor(private router :Router,private usersrvice:UserService) { }
 
   loginform=new FormGroup({
     username:new FormControl(''),
@@ -21,8 +22,18 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(){
-    console.warn(this.loginform.value)
-    this.usersrvice.loginuser(this.loginform.value).subscribe(data=>console.log(data))
+    // console.warn(this.loginform.value)
+    this.usersrvice.loginuser(this.loginform.value)
+    .subscribe(user=>{console.log(user)
+      if (user && user.token) {
+        // store user details and jwt token in local storage to keep user logged in between page refreshes
+        localStorage.setItem("currentUser", user.token);
+        this.router.navigate(["/codetest"])
+
+      }
+
+
+    })
   }
 
 }

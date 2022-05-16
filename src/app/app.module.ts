@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './user.service';
 import { UsersserachComponent } from './usersserach/usersserach.component';
+import { CodetestComponent } from './codetest/codetest.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { UsersserachComponent } from './usersserach/usersserach.component';
     AppComponent,
     RegisterComponent,
     LoginComponent,
-    UsersserachComponent
+    UsersserachComponent,
+    CodetestComponent
   ],
   imports: [
     BrowserModule,
