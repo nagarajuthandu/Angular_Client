@@ -12,20 +12,22 @@ interface Code {
   code: String;
   input: String;
 }
+
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-
+  apiURL="http://localhost";
+  currentuser="";
   constructor(private http:HttpClient) { }
 
   public registerUser(data:User)
    {
-    return  this.http.post("http://localhost/user/register",data);
+    return  this.http.post(this.apiURL+"/user/register",data);
    }
    public loginuser(data:User):Observable<any>
    {
-    return  this.http.post("http://localhost/user/login",data);
+    return  this.http.post(this.apiURL+"/user/login",data);
    }
    public usersearch():Observable<any>
    {
@@ -34,11 +36,11 @@ export class UserService {
       JSON.stringify(localStorage.getItem("currentUser"))
     );
 
-    return this.http.get("http://localhost/user/users",{'headers':header})
+    return this.http.get(this.apiURL+"/user/users",{'headers':header})
    }
    public coderun(data:Code):Observable<any>
    {
-        return this.http.post("http://localhost/user/run",data)
+        return this.http.post(this.apiURL+"/user/run",data)
    }
 
 
