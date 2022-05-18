@@ -23,17 +23,21 @@
 <div class="col-sm-6">
   <div class="row">
     <div class="col-sm-12">
-      <h3>Q(Number):Programm Description</h3>
-      <p>program procedure</p>
+      <h3>
+        <button class="btn-warning"(click)="prevItem()">Prev</button>
+        Qn:<button class="btn-warning"(click)="nextItem()">Next</button></h3>
+      <div>
+        <p>{{currentItem.question}}</p>
+
+      </div>
 
     </div>
   </div>
   <div class="row">
     <div class="col-sm-12">
       <h3>Expected Result</h3>
-      <h6>Test Case 1</h6>
-      <h6>Test Case 2</h6>
-      <h6>Test Case 3</h6>
+      <h6>{{currentItem.expop}}</h6>
+
 
     </div>
   </div>

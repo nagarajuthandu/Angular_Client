@@ -38,6 +38,15 @@ export class UserService {
 
     return this.http.get(this.apiURL+"/user/users",{'headers':header})
    }
+   public getqn():Observable<any>
+   {
+    let header = new HttpHeaders().set(
+      "authorization",
+      JSON.stringify(localStorage.getItem("currentUser"))
+    );
+
+    return this.http.get(this.apiURL+"/user/getqn",{'headers':header})
+   }
    public coderun(data:Code):Observable<any>
    {
         return this.http.post(this.apiURL+"/user/run",data)
