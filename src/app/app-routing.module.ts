@@ -4,12 +4,19 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component'
 import { UsersserachComponent } from './usersserach/usersserach.component';
 import { CodetestComponent } from './codetest/codetest.component';
+import { TLoginComponent } from './teacher/login/login.component';
+import { TRegisterComponent } from './teacher/register/register.component';
+import { AddqnComponent } from './teacher/addqn/addqn.component';
 
 
 const routes: Routes = [{path:'register',component:RegisterComponent},
                         {path:'login',component:LoginComponent},
                       {path:'usersearch',component:UsersserachComponent},
-                    {path:'codetest',component:CodetestComponent}
+                    {path:'codetest',component:CodetestComponent},
+                    {path:'Teacherlogin',component:TLoginComponent},
+                    {path:"Teacherregister",component:TRegisterComponent},
+                    {path:"TeacherAddQn",component:AddqnComponent}
+
                     ];
 
 

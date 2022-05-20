@@ -7,9 +7,14 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './user.service';
+import { TeacherService } from './teacher.service';
 import { UsersserachComponent } from './usersserach/usersserach.component';
 import { CodetestComponent } from './codetest/codetest.component';
 import { TokenInterceptorInterceptor } from './token-interceptor.interceptor';
+import { AddqnComponent } from './teacher/addqn/addqn.component';
+import { TRegisterComponent } from './teacher/register/register.component';
+import { TLoginComponent } from './teacher/login/login.component';
+
 
 
 
@@ -19,7 +24,10 @@ import { TokenInterceptorInterceptor } from './token-interceptor.interceptor';
     RegisterComponent,
     LoginComponent,
     UsersserachComponent,
-    CodetestComponent
+    CodetestComponent,
+    AddqnComponent,
+    TRegisterComponent,
+    TLoginComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +35,7 @@ import { TokenInterceptorInterceptor } from './token-interceptor.interceptor';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [UserService,{
+  providers: [UserService,TeacherService,{
     provide:HTTP_INTERCEPTORS,
     useClass:TokenInterceptorInterceptor,
     multi:true

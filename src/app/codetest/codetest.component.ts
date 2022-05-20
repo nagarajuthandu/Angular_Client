@@ -11,10 +11,7 @@ interface Questions{
 	hdip : String,
 	hdop : String
 }
-interface Result
-{
-  output:String
-}
+
 
 @Component({
   selector: 'app-codetest',
@@ -23,9 +20,15 @@ interface Result
 })
 export class CodetestComponent implements OnInit {
 
-  result:Result[]=[]
-  currentusername=""
-  qn:Questions[]=[]
+  result:string="";
+  result2:string=""
+  currentusername="";
+  qn:Questions[]=[];
+  isShown: boolean = true;
+  isShown1:boolean = false;
+  currentIndex = 0;
+  currentItem:Questions = this.qn[this.currentIndex];
+  testcase:String="";
 
 
 
@@ -34,17 +37,22 @@ export class CodetestComponent implements OnInit {
     {
       language:new FormControl(''),
       code:new FormControl(''),
+      input:new FormControl('')
     }
   )
   runcode()
   {
-    this.userserive.coderun(this.codingfrom.value).subscribe(data => {
-      this.result=data.output
-    },
-    error=>{
-      console.log(error)
-    }
-    );
+    this.codingfrom.patchValue({input:this.currentItem.userip});
+    this.userserive.coderun(this.codingfrom.value).subscribe(data =>{
+      this.result=data.output.trim()
+      this.result2=this.currentItem.expop.trim()
+     if(this.result==this.result2){
+       this.testcase="PASS"
+     }
+     else{
+       this.testcase="FAIL"
+     }
+    } )
   }
 
   ngOnInit(): void {
@@ -52,10 +60,6 @@ export class CodetestComponent implements OnInit {
     this.currentusername=this.userserive.currentuser
     this.userserive.getqn().subscribe(data=>{
     this.qn=data;
-
-
-
-
     })
 
     if(!this.currentusername)
@@ -65,16 +69,29 @@ export class CodetestComponent implements OnInit {
 
   }
 
-    currentIndex = 0;
-    currentItem:Questions = this.qn[this.currentIndex];
+
     nextItem () {
     this.currentIndex++;
     this.currentItem = this.qn[this.currentIndex];
+    this.testcase="";
+    this.result=""
     }
     prevItem()
     {
-      this.currentIndex--;
+    this.currentIndex--;
     this.currentItem = this.qn[this.currentIndex];
+    this.testcase="";
+    this.result=""
     }
+    getQn()
+    {
+    this.currentItem = this.qn[this.currentIndex];
+    this.isShown = ! this.isShown;
+    this.isShown1 = ! this.isShown1;
+    }
+
+
+
+
 
 }

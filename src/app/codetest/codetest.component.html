@@ -11,11 +11,12 @@
             <option value="java">Java</option>
             <option value="py">Python</option>
             </select>
+
           <br>
   <h5>Code :</h5> <textarea rows="15" cols="90" class="form-control" formControlName="code"></textarea>
-  <button class="btn-danger">Reset code</button>
-  <button type="submit" class="btn-warning">Compile</button>
-  <button class="btn-success">Save</button>
+  <button  *ngIf="isShown1"class="btn-danger">Reset code</button>
+  <button *ngIf="isShown1" type="submit" class="btn-warning">Compile</button>
+  <button *ngIf="isShown1" class="btn-success">Save</button>
 </form>
 </div>
 </div>
@@ -24,10 +25,16 @@
   <div class="row">
     <div class="col-sm-12">
       <h3>
-        <button class="btn-warning"(click)="prevItem()">Prev</button>
-        Qn:<button class="btn-warning"(click)="nextItem()">Next</button></h3>
+
+        <button *ngIf="isShown" class="btn-warning"(click)="getQn()">Start</button>
+
+        <button *ngIf="isShown1" class="btn-warning"(click)="prevItem()">Prev</button>
+        <button *ngIf="isShown1" class="btn-warning"(click)="nextItem()">Next</button></h3>
       <div>
-        <p>{{currentItem.question}}</p>
+        <h3>Procedure</h3>
+        <h6>{{currentItem.question}}</h6>
+          <p>{{currentItem.desc}}</p>
+
 
       </div>
 
@@ -35,7 +42,7 @@
   </div>
   <div class="row">
     <div class="col-sm-12">
-      <h3>Expected Result</h3>
+      <h3>Expected Output</h3>
       <h6>{{currentItem.expop}}</h6>
 
 
@@ -44,12 +51,19 @@
 
   <div class="row">
     <div class="col-sm-12">
-      <h3>Test Result</h3>
+      <h3>Test Output</h3>
       {{result}}
 
     </div>
   </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <h3>Test Cases1</h3>
+      <p>{{testcase}}</p>
 
+
+    </div>
+  </div>
 </div>
 
 
