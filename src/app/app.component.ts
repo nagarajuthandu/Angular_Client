@@ -9,6 +9,11 @@ import { Router } from '@angular/router';
 })
 export class AppComponent{
   title = 'client';
+  navbarCollapsed = true;
+
+toggleNavbarCollapsing() {
+    this.navbarCollapsed = !this.navbarCollapsed;
+}
   constructor(private router: Router,private userservice:UserService){
 
   }

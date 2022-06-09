@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -13,8 +14,8 @@ export class LoginComponent implements OnInit {
   constructor(private router :Router,private usersrvice:UserService) { }
 
   loginform=new FormGroup({
-    username:new FormControl(''),
-    password:new FormControl('')
+    username:new FormControl('',Validators.required),
+    password:new FormControl('',Validators.required)
   })
 
 

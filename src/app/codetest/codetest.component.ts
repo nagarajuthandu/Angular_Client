@@ -32,6 +32,7 @@ export class CodetestComponent implements OnInit {
 
 
 
+
   constructor(private router:Router,private userserive:UserService) { }
   codingfrom=new FormGroup(
     {
@@ -43,6 +44,8 @@ export class CodetestComponent implements OnInit {
   runcode()
   {
     this.codingfrom.patchValue({input:this.currentItem.userip});
+    this.codingfrom.patchValue({input:this.currentItem.expop});
+
     this.userserive.coderun(this.codingfrom.value).subscribe(data =>{
       this.result=data.output.trim()
       this.result2=this.currentItem.expop.trim()

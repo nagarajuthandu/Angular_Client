@@ -3,17 +3,31 @@
   <div class="card-body">
 <form id="register" [formGroup]="register" (ngSubmit)="onSubmit()">
   <div class="form-group">
-    <label for="username">Email address</label>
+    <label for="username">username</label>
     <input type="username" class="form-control" formControlName="username" id="username"  placeholder="username">
-
+    <div *ngIf="register.controls['username'].invalid && (register.controls['username'].dirty || register.controls['username'].touched)" class="alert alert-danger">
+      <div *ngIf="register.controls['username'].errors">
+        username is required.
+    </div>
+    </div>
   </div>
   <div class="form-group">
     <label for="password">Password</label>
     <input type="password" class="form-control" formControlName="password" id="password" placeholder="password">
+    <div *ngIf="register.controls['password'].invalid && (register.controls['password'].dirty || register.controls['password'].touched)" class="alert alert-danger">
+      <div *ngIf="register.controls['password'].errors">
+        password is required.
+    </div>
+    </div>
   </div>
   <div class="form-group">
     <label for="mobile">Mobile</label>
     <input type="mobile" class="form-control" formControlName="mobile" id="mobile" placeholder="mobile">
+    <div *ngIf="register.controls['mobile'].invalid && (register.controls['mobile'].dirty || register.controls['mobile'].touched)" class="alert alert-danger">
+      <div *ngIf="register.controls['mobile'].errors">
+        mobile is required.
+    </div>
+    </div>
   </div>
 
   <button form="register" type="submit" class="btn btn-primary">Submit</button>

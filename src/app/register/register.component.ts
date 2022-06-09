@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormControl } from '@angular/forms';
+import { Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 @Component({
@@ -14,10 +15,11 @@ export class RegisterComponent implements OnInit {
   constructor(private router:Router, private userservice:UserService) { }
 
   register = new FormGroup({
-    username:new FormControl(''),
-    password:new FormControl(''),
-    mobile:new FormControl('')
+    username:new FormControl('',[Validators.required]),
+    password:new FormControl('',[Validators.required]),
+    mobile:new FormControl('',[Validators.required])
   });
+
   onSubmit() {
     // TODO: Use EventEmitter with form value
     // console.warn(this.register.value);

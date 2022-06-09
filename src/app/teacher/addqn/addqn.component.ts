@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { TeacherService } from 'src/app/teacher.service';
 import { Router } from '@angular/router';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-addqn',
@@ -11,12 +12,12 @@ import { Router } from '@angular/router';
 })
 export class AddqnComponent implements OnInit {
     addqn = new FormGroup({
-    question : new FormControl(''),
-    desc : new FormControl(''),
-    userip : new FormControl(''),
-    expop : new FormControl(''),
-    hdip : new FormControl(''),
-    hdop : new FormControl(''),
+    question : new FormControl('',Validators.required),
+    desc : new FormControl('',Validators.required),
+    userip : new FormControl('',Validators.required),
+    expop : new FormControl('',Validators.required),
+    hdip : new FormControl('',Validators.required),
+    hdop : new FormControl('',Validators.required),
 
   });
   constructor(private router:Router,private teacherservice:TeacherService) { }

@@ -3,30 +3,60 @@
     <div class="card-body">
   <form id="addqn" [formGroup]="addqn" (ngSubmit)="onSubmit()">
     <div class="form-group">
-      <label for="question">questions</label>
-      <input type="text" class="form-control" formControlName="question" id="question">
-
+      <label for="question">Questions</label>
+      <input type="text" class="form-control" formControlName="question" id="question" placeholder="question">
+      <div *ngIf="addqn.controls['question'].invalid && (addqn.controls['question'].dirty || addqn.controls['question'].touched)" class="alert alert-danger">
+        <div *ngIf="addqn.controls['question'].errors">
+          question is required.
+      </div>
+      </div>
     </div>
     <div class="form-group">
       <label for="desc">Description</label>
       <input type="text" class="form-control" formControlName="desc" id="desc" placeholder="Description">
+      <div *ngIf="addqn.controls['desc'].invalid && (addqn.controls['desc'].dirty || addqn.controls['desc'].touched)" class="alert alert-danger">
+        <div *ngIf="addqn.controls['desc'].errors">
+          desc is required.
+      </div>
+      </div>
     </div>
     <div class="form-group">
       <label for="userip">Your input</label>
-      <textarea style="white-space: pre-line" class="form-control" formControlName="userip" id="userip">
+      <textarea style="white-space: pre-line" class="form-control" formControlName="userip" id="userip" placeholder="userip">
     </textarea>
+    <div *ngIf="addqn.controls['userip'].invalid && (addqn.controls['userip'].dirty || addqn.controls['userip'].touched)" class="alert alert-danger">
+      <div *ngIf="addqn.controls['userip'].errors">
+        desc is required.
+    </div>
+    </div>
       </div>
     <div class="form-group">
       <label for="expop">Expected Output</label>
       <input type="text" class="form-control" formControlName="expop" id="expop" placeholder="expop">
+      <div *ngIf="addqn.controls['expop'].invalid && (addqn.controls['expop'].dirty || addqn.controls['expop'].touched)" class="alert alert-danger">
+        <div *ngIf="addqn.controls['expop'].errors">
+          expop is required.
+      </div>
+      </div>
     </div>
     <div class="form-group">
       <label for="hdip">Test case input</label>
-      <input type="hdip" class="form-control" formControlName="hdip" id="hdip" placeholder="hdip">
+      <textarea style="white-space: pre-line" type="hdip" class="form-control" formControlName="hdip" id="hdip" placeholder="hdip">
+      </textarea>
+        <div *ngIf="addqn.controls['hdip'].invalid && (addqn.controls['hdip'].dirty || addqn.controls['hdip'].touched)" class="alert alert-danger">
+        <div *ngIf="addqn.controls['hdip'].errors">
+          hdip is required.
+      </div>
+      </div>
     </div>
     <div class="form-group">
       <label for="hdop">Test case output</label>
       <input type="hdop" class="form-control" formControlName="hdop" id="hdop" placeholder="hdop">
+      <div *ngIf="addqn.controls['hdop'].invalid && (addqn.controls['hdop'].dirty || addqn.controls['hdop'].touched)" class="alert alert-danger">
+        <div *ngIf="addqn.controls['hdop'].errors">
+          hdop is required.
+      </div>
+      </div>
     </div>
 
     <button form="addqn" type="submit" class="btn btn-primary">AddQn</button>
