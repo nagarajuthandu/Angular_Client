@@ -20,15 +20,23 @@ interface Questions{
 })
 export class CodetestComponent implements OnInit {
 
-  result:string="";
-  result2:string=""
+
   currentusername="";
-  qn:Questions[]=[];
-  isShown: boolean = true;
-  isShown1:boolean = false;
   currentIndex = 0;
-  currentItem:Questions = this.qn[this.currentIndex];
-  testcase:String="";
+  questions:Questions[]=[];
+  qid : String="";
+	question : String="";
+	desc : String="";
+	userip : String="";
+	expop : String="";
+	hdip : String="";
+	hdop : String="";
+  result:String="";
+  testcase1:String="";
+  testcase2:String="";
+
+
+
 
 
 
@@ -38,31 +46,42 @@ export class CodetestComponent implements OnInit {
     {
       language:new FormControl(''),
       code:new FormControl(''),
-      input:new FormControl('')
+      userip:new FormControl(''),
+      expop:new FormControl(''),
+      hdip:new FormControl(''),
+      hdop:new FormControl('')
     }
   )
   runcode()
   {
-    this.codingfrom.patchValue({input:this.currentItem.userip});
-    this.codingfrom.patchValue({input:this.currentItem.expop});
+    this.codingfrom.patchValue({userip:this.userip});
+    this.codingfrom.patchValue({expop:this.expop});
+    this.codingfrom.patchValue({hdip:this.hdip});
+    this.codingfrom.patchValue({hdop:this.hdop});
+
 
     this.userserive.coderun(this.codingfrom.value).subscribe(data =>{
-      this.result=data.output.trim()
-      this.result2=this.currentItem.expop.trim()
-     if(this.result==this.result2){
-       this.testcase="PASS"
-     }
-     else{
-       this.testcase="FAIL"
-     }
-    } )
+
+    this.result=data.result
+    this.testcase1=data.testcase
+    })
+
+    this.codingfrom.patchValue({userip:this.hdip});
+    this.codingfrom.patchValue({expop:this.hdop});
+    this.userserive.coderun(this.codingfrom.value).subscribe(data =>{
+
+      this.testcase2=data.testcase
+      })
+
+
   }
 
   ngOnInit(): void {
 
     this.currentusername=this.userserive.currentuser
     this.userserive.getqn().subscribe(data=>{
-    this.qn=data;
+    this.questions=data;
+
     })
 
     if(!this.currentusername)
@@ -75,26 +94,24 @@ export class CodetestComponent implements OnInit {
 
     nextItem () {
     this.currentIndex++;
-    this.currentItem = this.qn[this.currentIndex];
-    this.testcase="";
-    this.result=""
+    this.getQn();
     }
     prevItem()
     {
     this.currentIndex--;
-    this.currentItem = this.qn[this.currentIndex];
-    this.testcase="";
-    this.result=""
+    this.getQn();
     }
     getQn()
     {
-    this.currentItem = this.qn[this.currentIndex];
-    this.isShown = ! this.isShown;
-    this.isShown1 = ! this.isShown1;
+
+    this.question=this.questions[this.currentIndex].question;
+    this.desc=this.questions[this.currentIndex].desc;
+    this.userip=this.questions[this.currentIndex].userip;
+    this.expop=this.questions[this.currentIndex].expop;
+    this.hdip=this.questions[this.currentIndex].hdip;
+    this.hdop=this.questions[this.currentIndex].hdop;
+
+
     }
-
-
-
-
 
 }
