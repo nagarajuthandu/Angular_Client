@@ -22,7 +22,7 @@ interface Questions {
   providedIn: 'root'
 })
 export class TeacherService {
-  apiURL="https://rajcongdeapi.herokuapp.com";
+  apiURL="https://rajcodeapi.herokuapp.com";
   // apiURL="http://localhost"
   currentuser="";
 
