@@ -21,7 +21,7 @@ export class ViewqnComponent implements OnInit {
   constructor(private router:Router,private teacherservice:TeacherService) { }
 
   ngOnInit(): void {
-    this.teacherservice.getqn().subscribe(data=>{
+    this.teacherservice.getqns().subscribe(data=>{
       this.questions=data;
       console.log(this.questions)
       })
@@ -30,9 +30,9 @@ export class ViewqnComponent implements OnInit {
   addQn(){
     this.router.navigate(["/TeacherAddQn"])
   }
-  update(_qid:String)
+  update(_qid:String,question:String,desc:String,userip:String,expop:String,hdip:String,hdop:String)
   {
-    console.log(_qid)
+    this.router.navigate(['/TeacherUpdateqn/'], { queryParams: { qid: _qid,question:question,desc:desc,userip:userip,expop:expop,hdip:hdip,hdop:hdop}});
   }
   delete(_qid:String)
   {

@@ -15,6 +15,7 @@ import { AddqnComponent } from './teacher/addqn/addqn.component';
 import { TRegisterComponent } from './teacher/register/register.component';
 import { TLoginComponent } from './teacher/login/login.component';
 import { ViewqnComponent } from './teacher/viewqn/viewqn.component';
+import { UpdateqnComponent } from './teacher/updateqn/updateqn.component';
 
 
 
@@ -29,7 +30,8 @@ import { ViewqnComponent } from './teacher/viewqn/viewqn.component';
     AddqnComponent,
     TRegisterComponent,
     TLoginComponent,
-    ViewqnComponent
+    ViewqnComponent,
+    UpdateqnComponent
   ],
   imports: [
     BrowserModule,

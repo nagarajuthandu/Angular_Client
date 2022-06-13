@@ -22,8 +22,8 @@ interface Questions {
   providedIn: 'root'
 })
 export class TeacherService {
-  // apiURL="https://rajcodeapi.herokuapp.com";
-  apiURL="http://localhost"
+  apiURL="https://rajcongdeapi.herokuapp.com";
+  // apiURL="http://localhost"
   currentuser="";
 
   constructor(private http:HttpClient) { }
@@ -39,7 +39,7 @@ export class TeacherService {
    {
     return  this.http.post(this.apiURL+"/teacher/addqn",data);
    }
-   public getqn():Observable<any>
+   public getqns():Observable<any>
    {
     let header = new HttpHeaders().set(
       "authorization",
@@ -47,6 +47,15 @@ export class TeacherService {
     );
 
     return this.http.get(this.apiURL+"/teacher/getqns",{'headers':header})
+   }
+   public getqn(qid:String):Observable<any>
+   {
+    let header = new HttpHeaders().set(
+      "authorization",
+      JSON.stringify(localStorage.getItem("currentUser"))
+    );
+
+    return this.http.get(this.apiURL+"/teacher/getqn/"+qid,{'headers':header})
    }
    public delete(_id:String):Observable<any>
    {
@@ -56,6 +65,15 @@ export class TeacherService {
     );
 
     return this.http.delete(this.apiURL+"/teacher/deleteqn/"+_id,{'headers':header})
+   }
+   public updateqn(_id:String,data:Questions):Observable<any>
+   {
+    let header = new HttpHeaders().set(
+      "authorization",
+      JSON.stringify(localStorage.getItem("currentUser"))
+    );
+
+    return this.http.put(this.apiURL+"/teacher/updateqn/"+_id,data)
    }
 
 
