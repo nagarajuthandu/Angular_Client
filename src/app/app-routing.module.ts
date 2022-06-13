@@ -7,6 +7,7 @@ import { CodetestComponent } from './codetest/codetest.component';
 import { TLoginComponent } from './teacher/login/login.component';
 import { TRegisterComponent } from './teacher/register/register.component';
 import { AddqnComponent } from './teacher/addqn/addqn.component';
+import { ViewqnComponent } from './teacher/viewqn/viewqn.component';
 
 
 const routes: Routes = [{path:'register',component:RegisterComponent},
@@ -15,7 +16,8 @@ const routes: Routes = [{path:'register',component:RegisterComponent},
                     {path:'codetest',component:CodetestComponent},
                     {path:'Teacherlogin',component:TLoginComponent},
                     {path:"Teacherregister",component:TRegisterComponent},
-                    {path:"TeacherAddQn",component:AddqnComponent}
+                    {path:"TeacherAddQn",component:AddqnComponent},
+                    {path:"Teacherviewqn",component:ViewqnComponent}
 
                     ];
 

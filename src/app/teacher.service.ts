@@ -22,8 +22,8 @@ interface Questions {
   providedIn: 'root'
 })
 export class TeacherService {
-  apiURL="https://rajcodeapi.herokuapp.com";
-  // apiURL="http://localhost"
+  // apiURL="https://rajcodeapi.herokuapp.com";
+  apiURL="http://localhost"
   currentuser="";
 
   constructor(private http:HttpClient) { }
@@ -39,4 +39,25 @@ export class TeacherService {
    {
     return  this.http.post(this.apiURL+"/teacher/addqn",data);
    }
+   public getqn():Observable<any>
+   {
+    let header = new HttpHeaders().set(
+      "authorization",
+      JSON.stringify(localStorage.getItem("currentUser"))
+    );
+
+    return this.http.get(this.apiURL+"/teacher/getqns",{'headers':header})
+   }
+   public delete(_id:String):Observable<any>
+   {
+    let header = new HttpHeaders().set(
+      "authorization",
+      JSON.stringify(localStorage.getItem("currentUser"))
+    );
+
+    return this.http.delete(this.apiURL+"/teacher/deleteqn/"+_id,{'headers':header})
+   }
+
+
+
 }

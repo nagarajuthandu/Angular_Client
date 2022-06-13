@@ -14,6 +14,7 @@ import { TokenInterceptorInterceptor } from './token-interceptor.interceptor';
 import { AddqnComponent } from './teacher/addqn/addqn.component';
 import { TRegisterComponent } from './teacher/register/register.component';
 import { TLoginComponent } from './teacher/login/login.component';
+import { ViewqnComponent } from './teacher/viewqn/viewqn.component';
 
 
 
@@ -27,7 +28,8 @@ import { TLoginComponent } from './teacher/login/login.component';
     CodetestComponent,
     AddqnComponent,
     TRegisterComponent,
-    TLoginComponent
+    TLoginComponent,
+    ViewqnComponent
   ],
   imports: [
     BrowserModule,

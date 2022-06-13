@@ -30,7 +30,7 @@ export class TLoginComponent implements OnInit {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem("currentUser", user.token);
         this.teacherservice.currentuser=user.username
-        this.router.navigate(["/TeacherAddQn"])
+        this.router.navigate(["/Teacherviewqn"])
 
       }
 

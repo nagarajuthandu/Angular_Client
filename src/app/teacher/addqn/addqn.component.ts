@@ -30,7 +30,7 @@ export class AddqnComponent implements OnInit {
     this.teacherservice.addQn(this.addqn.value).subscribe(data => {
       alert("Qutions added sucess fully");
       this.addqn.reset()
-      this.router.navigate(["/TeacherAddQn"])
+      this.router.navigate(["/Teacherviewqn"])
   });
 }
 }

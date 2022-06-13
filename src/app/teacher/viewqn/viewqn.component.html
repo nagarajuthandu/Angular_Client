@@ -1,0 +1,31 @@
+<button (click)="addQn()" class="formgoup">Add New Question</button>
+<table class='table'>
+  <thead>
+      <tr>
+          <th>id</th>
+          <th>Quetion</th>
+          <th>Description</th>
+          <th>input</th>
+          <th>output</th>
+          <th>hidden input</th>
+          <th>hidden output</th>
+          <th>update</th>
+          <th>delete</th>
+
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let quetion of questions;">
+          <td>{{quetion._id}}</td>
+          <td>{{quetion.question}}</td>
+          <td>{{quetion.desc}}</td>
+          <td>{{quetion.userip}}</td>
+          <td>{{quetion.expop}}</td>
+          <td>{{quetion.hdip}}</td>
+          <td>{{quetion.hdop}}</td>
+          <td><button (click)="update(quetion._id)">update</button></td>
+          <td><button (click)="delete(quetion._id)">delete</button></td>
+
+      </tr>
+  </tbody>
+</table>
