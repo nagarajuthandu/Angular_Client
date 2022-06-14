@@ -19,8 +19,8 @@ interface Code {
   providedIn: 'root'
 })
 export class UserService {
-  // apiURL="https://rajcodeapi.herokuapp.com";
-  apiURL="http://localhost"
+  apiURL="https://rajcodeapi.herokuapp.com";
+  // apiURL="http://localhost"
   currentuser="";
   constructor(private http:HttpClient) { }
 
