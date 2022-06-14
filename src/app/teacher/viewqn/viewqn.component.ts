@@ -36,7 +36,7 @@ export class ViewqnComponent implements OnInit {
   }
   delete(_qid:String)
   {
-    console.log(_qid)
+   
     this.teacherservice.delete(_qid).subscribe(data=>{
       console.log(data)
       this.router.navigate(["/Teacherviewqn"])

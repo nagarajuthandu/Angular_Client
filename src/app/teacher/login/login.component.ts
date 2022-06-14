@@ -31,7 +31,9 @@ export class TLoginComponent implements OnInit {
         localStorage.setItem("currentUser", user.token);
         this.teacherservice.currentuser=user.username
         this.router.navigate(["/Teacherviewqn"])
-
+      }
+      else{
+        alert("invalid ")
       }
 
 

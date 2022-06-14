@@ -33,7 +33,7 @@ export class UpdateqnComponent implements OnInit {
 	expop : String="";
 	hdip : String="";
 	hdop : String="";
-  addqn = new FormGroup({
+  updateqn = new FormGroup({
     question : new FormControl('',Validators.required),
     desc : new FormControl('',Validators.required),
     userip : new FormControl('',Validators.required),
@@ -62,9 +62,9 @@ export class UpdateqnComponent implements OnInit {
 
   onSubmit()
   {
-    this.teacherservice.updateqn(this.updateqid,this.addqn.value).subscribe(data => {
+      this.teacherservice.updateqn(this.updateqid,this.updateqn.value).subscribe(data => {
       alert("Qutions updated sucess fully");
-      this.addqn.reset()
+      this.updateqn.reset()
       this.router.navigate(["/Teacherviewqn"])
     })
 

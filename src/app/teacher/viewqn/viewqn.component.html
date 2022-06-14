@@ -1,8 +1,12 @@
-<button (click)="addQn()" class="formgoup">Add New Question</button>
+<br>
+<button class="btn btn-success" (click)="addQn()">Add New Question</button>
+<button class="btn btn-primary" routerLink="/usersearch">View Students List</button>
+<button class="btn btn-danger" routerLink="">View Students Score</button>
+
 <table class='table'>
   <thead>
       <tr>
-          <th>id</th>
+          <!-- <th>id</th> -->
           <th>Quetion</th>
           <th>Description</th>
           <th>input</th>
@@ -16,15 +20,15 @@
   </thead>
   <tbody>
       <tr *ngFor="let quetion of questions;">
-          <td>{{quetion._id}}</td>
+          <!-- <td>{{quetion._id}}</td> -->
           <td>{{quetion.question}}</td>
           <td>{{quetion.desc}}</td>
           <td>{{quetion.userip}}</td>
           <td>{{quetion.expop}}</td>
           <td>{{quetion.hdip}}</td>
           <td>{{quetion.hdop}}</td>
-          <td><button (click)="update(quetion._id,quetion.question,quetion.desc,quetion.userip,quetion.expop,quetion.hdip,quetion.hdop)">update</button></td>
-          <td><button (click)="delete(quetion._id)">delete</button></td>
+          <td><button class="btn btn-primary" (click)="update(quetion._id,quetion.question,quetion.desc,quetion.userip,quetion.expop,quetion.hdip,quetion.hdop)">update</button></td>
+          <td><button class="btn btn-danger" (click)="delete(quetion._id)">delete</button></td>
 
       </tr>
   </tbody>

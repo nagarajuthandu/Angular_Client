@@ -12,12 +12,22 @@
               <option value="java">Java</option>
               <option value="py">Python</option>
               </select>
+              <div *ngIf="codingfrom.controls['language'].invalid && (codingfrom.controls['language'].dirty || codingfrom.controls['language'].touched)" class="alert alert-danger">
+                <div *ngIf="codingfrom.controls['language'].errors">
+                  Language is required.
+              </div>
+              </div>
 
               <br>
-              <h5>Code :</h5> <textarea rows="15" cols="90" class="form-control" formControlName="code"></textarea>
-              <button  class="btn-danger">Reset code</button>
+              <h5>Code :</h5> <textarea rows="15" cols="90" class="form-control" formControlName="code" [(ngModel)]="code"></textarea>
+              <div *ngIf="codingfrom.controls['code'].invalid && (codingfrom.controls['code'].dirty || codingfrom.controls['code'].touched)" class="alert alert-danger">
+                <div *ngIf="codingfrom.controls['code'].errors">
+                  Code is required.
+              </div>
+              </div>
+              <button  class="btn-danger" (click)="reset()">Reset code</button>
               <button  type="submit" class="btn-warning">Compile</button>
-              <button  class="btn-success">Save</button>
+              <button  class="btn-success" (click)="save()">Save</button>
               </form>
             </div>
         </div>
@@ -27,13 +37,14 @@
         <button  class="btn-warning"(click)="prevItem()">Prev</button>
         <button  class="btn-warning"(click)="nextItem()">Next</button>
 
-        <p>Program : {{question}}</p>
-        <p>Description:{{desc}}</p>
-        <p>Input:{{userip}}</p>
-        <p>Expected Output:{{expop}}</p>
-        <p>Output:{{result}}</p>
-        <p>Test Case1:{{testcase1}}</p>
-        <p>Test Case2:{{testcase2}}</p>
+        <p><b>Program</b> : {{question}}</p>
+        <p><b>Description</b>:{{desc}}</p>
+        <p><b>Input</b>:{{userip}}</p>
+        <p><b>Expected Output</b>:{{expop}}</p>
+        <p><b>Output</b>:{{result}}</p>
+        <p><b>Test Case1</b>:{{testcase1}}</p>
+        <p><b>Test Case2</b>:{{testcase2}}</p>
+        <p><b>Score</b>:{{score}}</p>
 
       </div>
 

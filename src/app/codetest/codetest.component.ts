@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormControl } from '@angular/forms';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
+import { Validators } from '@angular/forms';
 interface Questions{
   qid : String,
 	question : String,
@@ -9,7 +10,8 @@ interface Questions{
 	userip : String,
 	expop : String,
 	hdip : String,
-	hdop : String
+	hdop : String,
+  code:String
 }
 
 
@@ -24,6 +26,7 @@ export class CodetestComponent implements OnInit {
   currentusername="";
   currentIndex = 0;
   questions:Questions[]=[];
+  code:String=""
   qid : String="";
 	question : String="";
 	desc : String="";
@@ -34,6 +37,10 @@ export class CodetestComponent implements OnInit {
   result:String="";
   testcase1:String="";
   testcase2:String="";
+  score:Number=0;
+
+
+
 
 
 
@@ -44,16 +51,20 @@ export class CodetestComponent implements OnInit {
   constructor(private router:Router,private userserive:UserService) { }
   codingfrom=new FormGroup(
     {
-      language:new FormControl(''),
-      code:new FormControl(''),
-      userip:new FormControl(''),
-      expop:new FormControl(''),
-      hdip:new FormControl(''),
-      hdop:new FormControl('')
+      language:new FormControl('',[Validators.required]),
+      code:new FormControl('',[Validators.required]),
+      userip:new FormControl('',[Validators.required]),
+      expop:new FormControl('',[Validators.required]),
+      hdip:new FormControl('',[Validators.required]),
+      hdop:new FormControl('',[Validators.required])
     }
   )
   runcode()
   {
+    if(!this.question)
+    {
+      alert("Please start test")
+    }
     this.codingfrom.patchValue({userip:this.userip});
     this.codingfrom.patchValue({expop:this.expop});
     this.codingfrom.patchValue({hdip:this.hdip});
@@ -64,14 +75,17 @@ export class CodetestComponent implements OnInit {
 
     this.result=data.result
     this.testcase1=data.testcase
+    if(this.testcase1==="PASS"){this.score=2;}
     })
 
     this.codingfrom.patchValue({userip:this.hdip});
     this.codingfrom.patchValue({expop:this.hdop});
     this.userserive.coderun(this.codingfrom.value).subscribe(data =>{
 
-      this.testcase2=data.testcase
-      })
+      this.testcase2=data.testcase;
+      if(this.testcase2==="PASS"){this.score=5;}
+
+    })
 
 
   }
@@ -95,15 +109,24 @@ export class CodetestComponent implements OnInit {
     nextItem () {
     this.currentIndex++;
     this.getQn();
+
+    this.testcase1=""
+    this.testcase2=""
+    this.result=""
+    this.score=0
     }
     prevItem()
     {
     this.currentIndex--;
     this.getQn();
+    this.testcase1=""
+    this.testcase2=""
+    this.result=""
+    this.score=0
     }
     getQn()
     {
-
+      this.qid=this.questions[this.currentIndex].qid;
     this.question=this.questions[this.currentIndex].question;
     this.desc=this.questions[this.currentIndex].desc;
     this.userip=this.questions[this.currentIndex].userip;
@@ -112,6 +135,24 @@ export class CodetestComponent implements OnInit {
     this.hdop=this.questions[this.currentIndex].hdop;
 
 
+    }
+    save()
+    {
+      if(this.testcase1==="PASS" && this.testcase2=="PASS")
+    {
+      // let results=JSON.stringify({username:this.currentusername,qid:this.qid,score:this.score,output:this.result});
+      // console.log(results)
+      // this.userserive.save(results).subscribe(data=>{console.log(data)})
+      alert("You cant save  please contact admin")
+    }
+    else
+    {
+      alert("Please compile and run before save")
+    }
+    }
+    reset()
+    {
+      this.codingfrom.reset()
     }
 
 }

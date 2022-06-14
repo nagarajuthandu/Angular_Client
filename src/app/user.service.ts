@@ -13,12 +13,14 @@ interface Code {
   input: String;
 }
 
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  apiURL="https://rajcodeapi.herokuapp.com";
-  // apiURL="http://localhost"
+  // apiURL="https://rajcodeapi.herokuapp.com";
+  apiURL="http://localhost"
   currentuser="";
   constructor(private http:HttpClient) { }
 
@@ -52,7 +54,10 @@ export class UserService {
    {
         return this.http.post(this.apiURL+"/user/run",data)
    }
-
+   public save(data:String):Observable<any>
+   {
+     return this.http.post(this.apiURL+"/user/save",data)
+   }
 
    logout()
     {
