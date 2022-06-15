@@ -75,7 +75,15 @@ export class TeacherService {
 
     return this.http.put(this.apiURL+"/teacher/updateqn/"+_id,data)
    }
+   public getresults():Observable<any>
+   {
+    let header = new HttpHeaders().set(
+      "authorization",
+      JSON.stringify(localStorage.getItem("currentUser"))
+    );
 
+    return this.http.get(this.apiURL+"/teacher/getresults",{'headers':header})
+   }
 
 
 }

@@ -12,6 +12,17 @@ interface Code {
   code: String;
   input: String;
 }
+interface Result
+{
+  username:String,
+  qid:String,
+  question:String,
+  language:String,
+  code:String,
+  input:String,
+  output:String,
+  score:Number,
+}
 
 
 
@@ -54,9 +65,10 @@ export class UserService {
    {
         return this.http.post(this.apiURL+"/user/run",data)
    }
-   public save(data:String):Observable<any>
+   public save(data:Result):Observable<any>
    {
-     return this.http.post(this.apiURL+"/user/save",data)
+    console.log(data)
+    return this.http.post(this.apiURL+"/user/save",data)
    }
 
    logout()

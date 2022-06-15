@@ -3,8 +3,9 @@ import { FormGroup,FormControl } from '@angular/forms';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 import { Validators } from '@angular/forms';
+import { ThisReceiver } from '@angular/compiler';
 interface Questions{
-  qid : String,
+  _id : String,
 	question : String,
 	desc : String,
 	userip : String,
@@ -13,7 +14,17 @@ interface Questions{
 	hdop : String,
   code:String
 }
-
+class Result
+{
+  username:String="";
+  qid:String="";
+  question:String="";
+  language:String="";
+  code:String="";
+  input:String="";
+  output:String="";
+  score:Number=0;
+}
 
 @Component({
   selector: 'app-codetest',
@@ -38,6 +49,9 @@ export class CodetestComponent implements OnInit {
   testcase1:String="";
   testcase2:String="";
   score:Number=0;
+  language:String="";
+
+  results:Result=new Result()
 
 
 
@@ -65,6 +79,9 @@ export class CodetestComponent implements OnInit {
     {
       alert("Please start test")
     }
+    this.code=this.codingfrom.controls["code"].value;
+    this.language=this.codingfrom.controls["language"].value;
+
     this.codingfrom.patchValue({userip:this.userip});
     this.codingfrom.patchValue({expop:this.expop});
     this.codingfrom.patchValue({hdip:this.hdip});
@@ -126,7 +143,7 @@ export class CodetestComponent implements OnInit {
     }
     getQn()
     {
-      this.qid=this.questions[this.currentIndex].qid;
+      this.qid=this.questions[this.currentIndex]._id;
     this.question=this.questions[this.currentIndex].question;
     this.desc=this.questions[this.currentIndex].desc;
     this.userip=this.questions[this.currentIndex].userip;
@@ -141,9 +158,21 @@ export class CodetestComponent implements OnInit {
       if(this.testcase1==="PASS" && this.testcase2=="PASS")
     {
       // let results=JSON.stringify({username:this.currentusername,qid:this.qid,score:this.score,output:this.result});
-      // console.log(results)
-      // this.userserive.save(results).subscribe(data=>{console.log(data)})
-      alert("You cant save  please contact admin")
+      this.results.username=this.currentusername
+      this.results.qid=this.qid
+      this.results.question=this.question
+      this.results.language=this.language
+      this.results.code=this.code
+      this.results.input=this.userip
+      this.results.output=this.result
+      this.results.score=this.score
+
+
+
+
+      console.log(this.results)
+      this.userserive.save(this.results).subscribe(data=>{console.log(data)})
+      alert("Results saved successfully")
     }
     else
     {

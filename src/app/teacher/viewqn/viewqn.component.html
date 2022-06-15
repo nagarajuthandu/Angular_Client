@@ -1,7 +1,8 @@
 <br>
-<button class="btn btn-success" (click)="addQn()">Add New Question</button>
+<button class="btn btn-success" routerLink="/Teacherviewqn">View Questions</button>
+<button class="btn btn-success" routerLink="/TeacherAddQn">Add New Question</button>
 <button class="btn btn-primary" routerLink="/usersearch">View Students List</button>
-<button class="btn btn-danger" routerLink="">View Students Score</button>
+<button class="btn btn-danger" routerLink="/Viewresults">View Students Score</button>
 
 <table class='table'>
   <thead>
@@ -21,12 +22,12 @@
   <tbody>
       <tr *ngFor="let quetion of questions;">
           <!-- <td>{{quetion._id}}</td> -->
-          <td>{{quetion.question}}</td>
-          <td>{{quetion.desc}}</td>
-          <td>{{quetion.userip}}</td>
-          <td>{{quetion.expop}}</td>
-          <td>{{quetion.hdip}}</td>
-          <td>{{quetion.hdop}}</td>
+          <td style="white-space: pre-line">{{quetion.question}}</td>
+          <td style="white-space: pre-line">{{quetion.desc}}</td>
+          <td style="white-space: pre-line">{{quetion.userip}}</td>
+          <td style="white-space: pre-line">{{quetion.expop}}</td>
+          <td style="white-space: pre-line">{{quetion.hdip}}</td>
+          <td style="white-space: pre-line">{{quetion.hdop}}</td>
           <td><button class="btn btn-primary" (click)="update(quetion._id,quetion.question,quetion.desc,quetion.userip,quetion.expop,quetion.hdip,quetion.hdop)">update</button></td>
           <td><button class="btn btn-danger" (click)="delete(quetion._id)">delete</button></td>
 

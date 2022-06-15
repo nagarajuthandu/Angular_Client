@@ -16,6 +16,7 @@ import { TRegisterComponent } from './teacher/register/register.component';
 import { TLoginComponent } from './teacher/login/login.component';
 import { ViewqnComponent } from './teacher/viewqn/viewqn.component';
 import { UpdateqnComponent } from './teacher/updateqn/updateqn.component';
+import { ViewresultsComponent } from './teacher/viewresults/viewresults.component';
 
 
 
@@ -31,7 +32,8 @@ import { UpdateqnComponent } from './teacher/updateqn/updateqn.component';
     TRegisterComponent,
     TLoginComponent,
     ViewqnComponent,
-    UpdateqnComponent
+    UpdateqnComponent,
+    ViewresultsComponent
   ],
   imports: [
     BrowserModule,

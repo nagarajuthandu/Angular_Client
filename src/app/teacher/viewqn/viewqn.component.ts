@@ -27,16 +27,14 @@ export class ViewqnComponent implements OnInit {
       })
   }
 
-  addQn(){
-    this.router.navigate(["/TeacherAddQn"])
-  }
+
   update(_qid:String,question:String,desc:String,userip:String,expop:String,hdip:String,hdop:String)
   {
     this.router.navigate(['/TeacherUpdateqn/'], { queryParams: { qid: _qid,question:question,desc:desc,userip:userip,expop:expop,hdip:hdip,hdop:hdop}});
   }
   delete(_qid:String)
   {
-   
+
     this.teacherservice.delete(_qid).subscribe(data=>{
       console.log(data)
       this.router.navigate(["/Teacherviewqn"])

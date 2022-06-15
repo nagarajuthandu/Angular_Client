@@ -1,0 +1,33 @@
+<br>
+<button class="btn btn-success" routerLink="/Teacherviewqn">View Questions</button>
+<button class="btn btn-success" routerLink="/TeacherAddQn">Add New Question</button>
+<button class="btn btn-primary" routerLink="/usersearch">View Students List</button>
+<button class="btn btn-danger" routerLink="/Viewresults">View Students Score</button>
+
+<table class='table'>
+  <thead>
+      <tr>
+          <th>Username</th>
+          <th>question</th>
+          <th>language</th>
+          <th>code</th>
+          <th>inputs</th>
+          <th>output</th>
+          <th>score</th>
+
+
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let result of results;">
+          <td>{{result.username}}</td>
+          <td style="white-space: pre-line">{{result.question}}</td>
+          <td>{{result.language}}</td>
+          <td style="white-space: pre-line">{{result.code}}</td>
+          <td style="white-space: pre-line">{{result.input}}</td>
+          <td style="white-space: pre-line">{{result.output}}</td>
+          <td style="white-space: pre-line">{{result.score}}</td>
+
+      </tr>
+  </tbody>
+</table>
